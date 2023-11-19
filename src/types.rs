@@ -17,8 +17,8 @@ pub struct Token {
 #[derive(Debug, Clone, Deserialize)]
 pub enum PackageType {
     Published,
-    User
-}   
+    User,
+}
 
 // -----------------------------------------------------
 
@@ -26,7 +26,7 @@ pub enum PackageType {
 pub struct TargetFolder {
     pub id: usize,
     pub name: String,
-    pub path: String
+    pub path: String,
 }
 
 /// Published Data Package
@@ -38,7 +38,7 @@ pub struct DataPackageFolder {
     pub source_folder: String,
     pub name: String,
     pub description: String,
-    pub published: bool
+    pub published: bool,
 }
 
 // -----------------------------------------------------
@@ -49,7 +49,7 @@ pub struct FileLink {
     pub href: String,
     pub rel: String,
     pub method: String,
-    pub is_templated: bool
+    pub is_templated: bool,
 }
 
 /// File from a published Data Package.
@@ -60,14 +60,14 @@ pub struct DataPackageFile {
     pub name: String,
     pub size: String,
 
-    #[cfg(all(feature = "time"))]
+    #[cfg(feature = "time")]
     #[serde(with = "time::serde::iso8601")]
     pub date_time: time::OffsetDateTime,
 
     #[cfg(not(feature = "time"))]
     pub date_time: String,
 
-    pub links: Vec<FileLink>
+    pub links: Vec<FileLink>,
 }
 
 // -----------------------------------------------------
@@ -80,25 +80,19 @@ pub struct UserFile {
     pub name: String,
     pub size: String,
 
-    // TODO: No time offset (ie timezone) is specified by the api result, figure 
+    // TODO: No time offset (ie timezone) is specified by the api result, figure
     // out workaround or a "good guess."
-    pub date_time: String
+    pub date_time: String,
 }
 
 // -----------------------------------------------------
 
-
 pub enum DownloadCategory<'a> {
-    Published {
-        id: &'a usize,
-        file: &'a String
-    },
-    User {
-        file: &'a String
-    }
+    Published { id: &'a usize, file: &'a String },
+    User { file: &'a String },
 }
 
 pub enum DownloadToken {
     Published(String),
-    User(String)
+    User(String),
 }
