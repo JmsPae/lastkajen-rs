@@ -12,7 +12,7 @@ lastkajen = { git = "https://github.com/JmsPae/lastkajen-rs.git" }
 
 Implementation is based off the [service description][1] and supports all of its current functionalities. You will need login credentials (email and password) to use the API, for which you can register [here][2].
 
-Lastkajen is a download service for portions of the Swedish national road database (referred to as NVDB, Nationella VägDataBas) and this crate aims to be a convinient link between your rust service and the download service. 
+Lastkajen is a download service for portions of the Swedish national road database (referred to as NVDB, Nationella Väg DataBas) and this crate aims to be a convenient link between your rust service and the download service. 
 
 There are two distinct categories of datasets:
 
